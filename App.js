@@ -4,11 +4,11 @@ import {View} from "react-native";
 import {Login} from "./src/pages/Login";
 
 const App = () => {
-  return (
-    <View>
-      <Login />
-    </View>
-  );
+	return (
+		<View>
+			<Login />
+		</View>
+	);
 };
 
 export default App;
