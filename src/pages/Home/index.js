@@ -6,7 +6,7 @@ import { Header } from "../../components/Header";
 export function Home ({ navigation }) {
 	return (
 		<View>
-			<Header title="Home" navigation={ navigation }/>
+			<Header title="Minhas coleções" navigation={ navigation }/>
 			<Text>Home works</Text>
 		</View>
 	);
