@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
 		borderRadius: 100,
 		borderWidth: 3,
 		borderColor: "#F0F0",
-		elevation: 25
 	},
 	profileName: {
 		fontSize: 16,
