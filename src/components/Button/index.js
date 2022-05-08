@@ -1,10 +1,14 @@
 import * as React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { Link, useNavigation } from "@react-navigation/native";
+import { NewCollection } from "../../pages/NewCollection";
 
-export const Button = ({ text, color, border }) => {
+export const Button = ({ text, color, border, width = 320, href = "Minhas coleções" }) => {
+	const navigation = useNavigation();
+
 	const styles = StyleSheet.create({
 		button: {
-			width: "100%",
+			width: width,
 			height: 46,
 			backgroundColor: color,
 			display: "flex",
@@ -21,8 +25,8 @@ export const Button = ({ text, color, border }) => {
 	});
 
 	return (
-		<TouchableOpacity style={ styles.button }>
-			<Text style={ styles.text }>{ text }</Text>
-		</TouchableOpacity>
+		<View style={ styles.button }>
+				<Text style={ styles.text }>{ text }</Text>
+		</View>
 	);
 }

@@ -1,9 +1,14 @@
-import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import React, { useContext } from "react";
+import { Link, useNavigation } from "@react-navigation/native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon  from "react-native-vector-icons/FontAwesome";
+import { FlashcardContext } from "../../providers/FlashcardProvider";
 
 
-export const ObjectCard = ({ front, back }) => {
+export const ObjectCard = ({ id, front, back }) => {
+	const navigation = useNavigation();
+	const { deleteFlashcard } = useContext(FlashcardContext);
+
 	const styles = StyleSheet.create({
 		cardBackground: {
 			backgroundColor: "#FFF",
@@ -51,12 +56,17 @@ export const ObjectCard = ({ front, back }) => {
 
 			<View style={ styles.control }>
 				<Icon name="trash-o" color="#FFF" size={ 30 } />
-				<Icon name="pencil" color="#2680EB" size={ 30 } />
-				<Icon name="trash-o" color="#FF0C0C" size={ 30 } />
+				<TouchableOpacity onPress={ () => navigation.navigate("Editar Flashcard", {
+					itemID: id,
+					front: front,
+					back: back
+				}) }>
+					<Icon name="pencil" color="#2680EB" size={ 30 } />
+				</TouchableOpacity>
+				<TouchableOpacity onPress={ () => deleteFlashcard(id) }>
+					<Icon name="trash-o" color="#FF0C0C" size={ 30 } />
+				</TouchableOpacity>
 			</View>
 		</View>
 	);
 };
-
-
-

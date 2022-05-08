@@ -1,14 +1,16 @@
-import * as React from "react";
-import { Text, View, StyleSheet, ScrollView, Button, TextInput } from "react-native";
+import React, { useContext } from "react";
+import { Link } from "@react-navigation/native";
+import { Text, View, StyleSheet, ScrollView, TextInput, TouchableOpacity } from "react-native";
+import { Button } from "../../components/Button";
 import { Background } from "../../components/Background";
-import { CollectionCard } from "../../components/CollectionCard";
 import { Header } from "../../components/Header";
-import Icon  from "react-native-vector-icons/FontAwesome";
 import { ObjectCard } from "../../components/ObjectCard";
+import { FlashcardContext } from "../../providers/FlashcardProvider";
 
 
-// eslint-disable-next-line react/prop-types
 export function FlashCards ({ navigation }) {
+	const { flashcardList } = useContext(FlashcardContext);
+
 	const styles = StyleSheet.create({
 		section: {
 			height: "100%",
@@ -51,7 +53,7 @@ export function FlashCards ({ navigation }) {
 				<Background>
 					<View style={ styles.section }>
 						<TextInput
-							style={styles.input}
+							style={ styles.input }
 							keyboardType="ascii-capable"
 							placeholder="Pesquise por um objeto.."
 							label="search"
@@ -59,21 +61,24 @@ export function FlashCards ({ navigation }) {
 						/>
 
 						<View style={ styles.buttonContainer }>
-							<Button title="Jogar!" color="#57966A"/>
+							<Button text="Jogar!" width={ 157 } color="#57966A" href="Jogar"/>
 						</View>
 
-						<ObjectCard front="Árvore" back="Tree" />
-						<ObjectCard front="Janela" back="Window" />
-						<ObjectCard front="Porta" back="Door" />
-						<ObjectCard front="Parede" back="Wall" />
-						<ObjectCard front="Chão" back="Floor" />
-						<ObjectCard front="Cozinha" back="Kitchen" />
-						<ObjectCard front="Quarto" back="Bedroom" />
+						{
+							flashcardList?.map((flashcard) => {
+								return (
+									<ObjectCard key={ flashcard.id } id={ flashcard.id } front={ flashcard.front } back={ flashcard.back } />
+								);
+							})
+						}
+
 					</View>
 				</Background>
 			</ScrollView>
 			<View style={ styles.addButton }>
-				<Text style={styles.addIcon}>+</Text>
+				<Link to="/Novo Flashcard">
+					<Text style={ styles.addIcon }>+</Text>
+				</Link>
 			</View>
 		</View>
 	);
