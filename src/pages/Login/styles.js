@@ -3,13 +3,8 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 
 export const styles = StyleSheet.create({
-	sectionTitle: {
-		fontSize: 24,
-		fontWeight: "600",
-		color: Colors.White,
-	},
 	logo: {
-		marginTop: 47,
+		marginTop: -70,
 		alignSelf: "center",
 		width: 132,
 		height: 132,
@@ -18,22 +13,30 @@ export const styles = StyleSheet.create({
 		width: "100%",
 	},
 	title: {
+		marginTop: -20,
+		marginBottom: 30,
 		fontFamily: "Pacifico-Regular",
-		fontSize: 54,
+		fontSize: 45,
+		textAlign: "center",
 		color: "#FFFFFF",
 	},
 	form: {
+		marginTop: 50,
 		width: "100%",
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "space-around",
 	},
 	input: {
-		width: "100%",
+		width: 310,
+		paddingHorizontal: 10,
 		marginTop: 12,
 		textAlign: "left",
+		borderTopRightRadius: 5,
+		borderTopLeftRadius: 5,
 		backgroundColor: "#FFFFFF",
-		borderBottomColor: "#707070",
+		borderBottomWidth: 3,
+		borderBottomColor: "#6200EE",
 	},
 	link: {
 		marginTop: 5,
@@ -42,7 +45,7 @@ export const styles = StyleSheet.create({
 		alignSelf: "flex-end"
 	},
 	buttonContainer: {
-		height: 200,
+		height: 240,
 		marginTop: 21,
 		display: "flex",
 		flexDirection: "column",

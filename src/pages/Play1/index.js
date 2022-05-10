@@ -34,7 +34,7 @@ export function Play1 ({ navigation }) {
 					</View>
 					<LargeFlashcard frontText="Brinquedo" backText="Toy" />
 					<View style={ styles.buttonContainer }>
-						<Button text="PRÓXIMO" color="#6A61A1" />
+						<Button text="PRÓXIMO" color="#6A61A1" href="Jogar 2" />
 					</View>
 			</Background>
 		</View>

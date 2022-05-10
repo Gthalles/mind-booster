@@ -18,6 +18,12 @@ export function FlashCards ({ navigation }) {
 			marginTop: 20
 		},
 		input: {
+			marginTop: 10,
+			width: 364,
+			borderTopRightRadius: 5,
+			borderTopLeftRadius: 5,
+			paddingHorizontal: 10,
+			alignSelf: "center",
 			textAlign: "left",
 			backgroundColor: "#FFFFFF",
 			borderBottomWidth: 3,
@@ -60,9 +66,9 @@ export function FlashCards ({ navigation }) {
 							returnKeyLabel="search"
 						/>
 
-						<View style={ styles.buttonContainer }>
+						<TouchableOpacity style={ styles.buttonContainer } onPress={ () => navigation.navigate("Jogar") }>
 							<Button text="Jogar!" width={ 157 } color="#57966A" href="Jogar"/>
-						</View>
+						</TouchableOpacity>
 
 						{
 							flashcardList?.map((flashcard) => {
@@ -76,9 +82,9 @@ export function FlashCards ({ navigation }) {
 				</Background>
 			</ScrollView>
 			<View style={ styles.addButton }>
-				<Link to="/Novo Flashcard">
+				<TouchableOpacity onPress={ () => navigation.navigate("Novo Flashcard")}>
 					<Text style={ styles.addIcon }>+</Text>
-				</Link>
+				</TouchableOpacity>
 			</View>
 		</View>
 	);

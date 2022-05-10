@@ -34,7 +34,7 @@ export function Play ({ navigation }) {
 					</View>
 					<Flashcard text="Brinquedo" />
 					<View style={ styles.buttonContainer }>
-						<Button text="VIRAR" color="#6A61A1" />
+						<Button text="VIRAR" color="#6A61A1" href="Jogar 1" />
 					</View>
 			</Background>
 		</View>

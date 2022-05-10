@@ -34,7 +34,7 @@ export function Play3 ({ navigation }) {
 					</View>
 					<LargeFlashcard frontText="Janela" backText="Window" />
 					<View style={ styles.buttonContainer }>
-						<Button text="FINALIZAR" color="#61A170" />
+						<Button text="FINALIZAR" color="#61A170"/>
 					</View>
 			</Background>
 		</View>
