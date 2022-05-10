@@ -1,15 +1,21 @@
-import * as React from "react";
+import React, { useState, useContext } from "react";
 import { Text, View, StyleSheet, TextInput } from "react-native";
 import { Button } from "../../components/Button";
 import { Background } from "../../components/Background";
 import { Header } from "../../components/Header";
+import { CollectionContext } from "../../providers/CollectionsProvider";
+import { Link } from "@react-navigation/native";
 
 // eslint-disable-next-line react/prop-types
-export function NewCollection ({ navigation }) {
+export const NewCollection = ({ navigation, route }) => {
+	const { itemID, title } = route.params;
+	const [ collectionTitle, setCollectinTitle ] = useState("");
+	const { createCollection } = useContext(CollectionContext);
+
 	const styles = StyleSheet.create({
 		topContainer: {
 			width: "80%",
-			marginTop: -80,
+			marginTop: -100,
 			marginBottom: 30,
 		},
 		instructionText: {
@@ -24,32 +30,40 @@ export function NewCollection ({ navigation }) {
 			justifyContent: "space-around",
 		},
 		name: {
-			width: "100%",
+			width: 310,
+			paddingHorizontal: 10,
 			height: 56,
 			marginTop: 12,
 			textAlign: "left",
+			borderTopRightRadius: 5,
+			borderTopLeftRadius: 5,
 			backgroundColor: "#FFFFFF",
-			borderBottomColor: "#707070",
-			borderTopRightRadius: 10,
-			borderTopLeftRadius: 10
+			borderBottomWidth: 3,
+			borderBottomColor: "#6200EE",
 		},
 		description: {
-			width: "100%",
+			width: 310,
+			paddingHorizontal: 10,
 			height: 118,
 			marginTop: 12,
 			textAlign: "left",
+			borderTopRightRadius: 5,
+			borderTopLeftRadius: 5,
 			backgroundColor: "#FFFFFF",
-			borderBottomColor: "#707070",
-			borderTopRightRadius: 10,
-			borderTopLeftRadius: 10
+			borderBottomWidth: 3,
+			borderBottomColor: "#6200EE",
 		},
 		imageInput: {
-			width: "100%",
+			width: 310,
+			paddingHorizontal: 10,
 			height: 190,
 			marginTop: 12,
 			textAlign: "left",
+			borderTopRightRadius: 5,
+			borderTopLeftRadius: 5,
 			backgroundColor: "#FFFFFF",
-			borderBottomColor: "#707070",
+			borderBottomWidth: 3,
+			borderBottomColor: "#6200EE",
 		},
 		buttonContainer: {
 			width: "80%",
@@ -67,7 +81,7 @@ export function NewCollection ({ navigation }) {
 			<Header title="Minhas coleções" navigation={ navigation }/>
 			<Background>
 					<View style={ styles.topContainer }>
-						<Text style={ styles.instructionText }>Preencha os dados referente à coleção a ser criada</Text>
+						<Text style={ styles.instructionText }>Preencha os dados referente à coleção a ser editada</Text>
 					</View>
 
 					<View style={styles.form}>
@@ -76,6 +90,7 @@ export function NewCollection ({ navigation }) {
 							label="E-mail"
 							keyboardType="ascii-capable"
 							placeholder="Insira o nome do objeto"
+							onChangeText={ text => setCollectinTitle(text) }
 						/>
 						<TextInput
 							style={styles.description}
@@ -94,8 +109,13 @@ export function NewCollection ({ navigation }) {
 						/>
 					</View>
 					<View style={ styles.buttonContainer }>
-						<Button text="CADASTRAR" color="#6A61A1" />
-						<Button text="CANCELAR" color="#423F5D" border/>
+						<Link to="/Minhas coleções" onPress={ () => createCollection({ title: collectionTitle }) }>
+							<Button text="SALVAR ALTERAÇÕES" color="#6A61A1" />
+						</Link>
+
+						<Link to="/Minhas coleções">
+							<Button text="CANCELAR" color="#423F5D" border/>
+						</Link>
 					</View>
 			</Background>
 		</View>

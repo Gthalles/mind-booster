@@ -1,6 +1,8 @@
-import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import React, { useContext } from "react";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import Icon  from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
+import { CollectionContext } from "../../providers/CollectionsProvider";
 
 import ball from "../../assets/icons/ball.png";
 import bear from "../../assets/icons/bear.png";
@@ -9,7 +11,9 @@ import tree from "../../assets/icons/tree.png";
 import arrow from "../../assets/icons/arrow.png";
 
 
-export const CollectionCard = ({ title }) => {
+export const CollectionCard = ({ id, title }) => {
+	const navigation = useNavigation();
+	const { deleteCollection } = useContext(CollectionContext);
 
 	function handleCardImage (imageText) {
 		if (imageText === "Objetos") {
@@ -24,7 +28,7 @@ export const CollectionCard = ({ title }) => {
 			return arrow;
 		}
 
-		return arrow;
+		return tree;
 	}
 
 	const styles = StyleSheet.create({
@@ -61,8 +65,15 @@ export const CollectionCard = ({ title }) => {
 			<Text style={ styles.cardText }>{ title }</Text>
 
 			<View style={ styles.control }>
-				<Icon name="pencil" color="#2680EB" size={ 30 } />
-				<Icon name="trash-o" color="#FF0C0C" size={ 30 } />
+				<TouchableOpacity onPress={ () => navigation.navigate("Editar Coleção", {
+					itemID: id,
+					title: title
+				}) }>
+				    <Icon name="pencil" color="#2680EB" size={ 30 } />
+				</TouchableOpacity>
+				<TouchableOpacity onPress={ () => deleteCollection(title) }>
+					<Icon name="trash-o" color="#FF0C0C" size={ 30 } />
+				</TouchableOpacity>
 			</View>
 		</View>
 	);

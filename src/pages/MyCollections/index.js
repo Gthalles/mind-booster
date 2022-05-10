@@ -1,12 +1,16 @@
-import * as React from "react";
-import { Text, View, StyleSheet, ScrollView, Button } from "react-native";
+import React, { useContext } from "react";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Link } from "@react-navigation/native";
 import { Background } from "../../components/Background";
 import { CollectionCard } from "../../components/CollectionCard";
 import { Header } from "../../components/Header";
+import { CollectionContext } from "../../providers/CollectionsProvider";
 
 
 // eslint-disable-next-line react/prop-types
 export function MyCollections ({ navigation }) {
+	const { collectionList } = useContext(CollectionContext);
+
 	const styles = StyleSheet.create({
 		section: {
 			height: "100%",
@@ -38,16 +42,20 @@ export function MyCollections ({ navigation }) {
 				<Header title="Minhas coleções" navigation={ navigation }/>
 				<Background>
 					<View style={ styles.section }>
-						<CollectionCard title="Objetos" />
-						<CollectionCard title="Cores" />
-						<CollectionCard title="Animais" />
-						<CollectionCard title="Adjetivos" />
-						<CollectionCard title="Pronomes" />
+						{
+							collectionList?.map((collection) => {
+								return (
+									<CollectionCard key={ collection.id } id={ collection.id } title={ collection.title } />
+								);
+							})
+						}
 					</View>
 				</Background>
 			</ScrollView>
 			<View style={ styles.button }>
-				<Text style={styles.addIcon}>+</Text>
+				<Link to="/Nova Coleção">
+					<Text style={styles.addIcon}>+</Text>
+				</Link>
 			</View>
 		</View>
 	);
