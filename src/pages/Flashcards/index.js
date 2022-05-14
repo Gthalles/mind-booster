@@ -66,7 +66,9 @@ export function FlashCards ({ navigation }) {
 							returnKeyLabel="search"
 						/>
 
-						<TouchableOpacity style={ styles.buttonContainer } onPress={ () => navigation.navigate("Jogar") }>
+						<TouchableOpacity style={ styles.buttonContainer } onPress={ () => navigation.navigate("Jogar", {
+							index: 1
+						}) }>
 							<Button text="Jogar!" width={ 157 } color="#57966A" href="Jogar"/>
 						</TouchableOpacity>
 
