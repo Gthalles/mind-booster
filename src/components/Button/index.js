@@ -1,7 +1,6 @@
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Link, useNavigation } from "@react-navigation/native";
-import { NewCollection } from "../../pages/NewCollection";
+import { useNavigation } from "@react-navigation/native";
 
 export const Button = ({ text, color, border, width = 320, href = "Minhas coleções" }) => {
 	const navigation = useNavigation();

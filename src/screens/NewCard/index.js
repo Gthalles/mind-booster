@@ -3,9 +3,9 @@ import { Text, View, StyleSheet, TextInput } from "react-native";
 import { Button } from "../../components/Button";
 import { Background } from "../../components/Background";
 import { Header } from "../../components/Header";
-import { SmallFlashcard } from "../../components/SmallFlashcard";
 import { FlashcardContext } from "../../providers/FlashcardProvider";
 import { Link } from "@react-navigation/native";
+
 
 // eslint-disable-next-line react/prop-types
 export function NewCard ({ navigation }) {

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { Link } from "@react-navigation/native";
 import { Background } from "../../components/Background";
 import { CollectionCard } from "../../components/CollectionCard";
@@ -43,9 +43,12 @@ export function MyCollections ({ navigation }) {
 				<Background>
 					<View style={ styles.section }>
 						{
+
 							collectionList?.map((collection) => {
 								return (
-									<CollectionCard key={ collection.id } id={ collection.id } title={ collection.title } />
+									<TouchableOpacity key={ collection.id } onPress={ () => navigation.navigate("Objetos") }>
+										<CollectionCard id={ collection.id } title={ collection.title } />
+									</TouchableOpacity>
 								);
 							})
 						}

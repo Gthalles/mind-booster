@@ -39,7 +39,7 @@ export const Login = () => {
 						<TouchableOpacity onPress={ () => navigation.navigate("Minhas coleções") }>
 							<Button text="ENTRAR" color="#6A61A1" />
 						</TouchableOpacity>
-						<TouchableOpacity>
+						<TouchableOpacity onPress={ () => navigation.navigate("SignUp") }>
 							<Button text="CADASTRE-SE" color="#B58D97" />
 						</TouchableOpacity>
 					</View>

@@ -7,26 +7,31 @@ import { View, StyleSheet, TouchableOpacity, Text, Image } from "react-native";
 import Icon  from "react-native-vector-icons/FontAwesome";
 import profilePicture from "../../assets/pp.jpg";
 
+import { EditCard } from "../../screens/EditCard";
+import { EditCollection } from "../../screens/EditCollection";
+import { Login } from "../../screens/Login";
+import { MyCollections } from "../../screens/MyCollections";
+import { NewCard } from "../../screens/NewCard";
+import { NewCollection } from "../../screens/NewCollection";
+import { FlashCards } from "../../screens/Flashcards";
+import { Play } from "../../screens/Play";
+import { Play1 } from "../../screens/Play1";
+import { Play2 } from "../../screens/Play2";
+import { Play3 } from "../../screens/Play3";
+import { SignUp } from "../../screens/SignUp";
 
-import { Login } from "../../pages/Login";
-import { Home } from "../../pages/Home";
 
 const Drawer = createDrawerNavigator();
 
 export const Menu = () => {
+
 	return (
 		<>
-			<Drawer.Navigator initialRouteName="Home" screenOptions={{ drawerStyle: styles.drawerStyle, headerShown: false, drawerLabelStyle: { color: "#FFF" }}}  drawerContent={(props) => <CustomDrawerContent {...props} />}>
+			<Drawer.Navigator initialRouteName="Minhas coleções" screenOptions={{ drawerStyle: styles.drawerStyle, headerShown: false, drawerLabelStyle: { color: "#FFF" }}}  drawerContent={ (props) => <CustomDrawerContent {...props} /> }>
 				<Drawer.Screen
 					name="Minhas coleções"
-					component={ Home }
+					component={ MyCollections }
 					options={ {drawerIcon: result => <Icon name="sliders" style={ styles.icon } />} }
-				/>
-
-				<Drawer.Screen
-					name="Login"
-					component={ Login }
-					options={ {drawerIcon: result => <Icon name="arrow-left" style={ styles.icon } />}}
 				/>
 			</Drawer.Navigator>
 		</>
@@ -99,4 +104,3 @@ const styles = StyleSheet.create({
 		color: "#FFF"
 	}
 });
-

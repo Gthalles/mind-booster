@@ -1,17 +1,14 @@
-/* eslint-disable react/prop-types */
-import * as React from "react";
+import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import Icon  from "react-native-vector-icons/FontAwesome";
 
 Icon.loadFont();
-
-// eslint-disable-next-line react/prop-types
 export const Header = ({ title, navigation }) => {
+
 	return (
 		<View style={ styles.container }>
-
 			<View style={ styles.containerButton }>
-				<TouchableOpacity style={ styles.button } onPress={ () => { navigation.openDrawer(); } }>
+			<TouchableOpacity style={ styles.button } onPress={ () => navigation.openDrawer() }>
 					<Icon name="bars" size={ 25 } color={ "#FFFFFF" } />
 				</TouchableOpacity>
 			</View>

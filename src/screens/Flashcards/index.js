@@ -15,6 +15,10 @@ export function FlashCards ({ navigation }) {
 
 	const [ filter, setFilter ] = useState("");
 
+	useEffect(() => {
+		setFilteredFlashcards(flashcardList);
+	}, [ flashcardList?.length ])
+
 	function handleSearch (filter) {
 		if (filter.length > 0) {
 			setFilteredFlashcards(flashcardList?.filter(flashcard => flashcard?.front == filter));
